@@ -7,9 +7,7 @@
 |
 */
 
-Route::get('/',function(){
-    return 'Home';
-});
+Route::get('/','WelcomeController');
 
 Route::get('/usuarios','UserController@index');
 
