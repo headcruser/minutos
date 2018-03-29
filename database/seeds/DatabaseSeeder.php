@@ -13,11 +13,19 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncateTable([
             'users',
-            'reuniones'
+            'reuniones',
+            'temas',
+            'acciones',
+            'acciontema',
+            'temareunion'
         ]);
 
         $this->call(UsersSeeder::class);
         $this->call(ReunionesSeeder::class);
+        $this->call(TemasSeeder::class);
+        $this->call(AccionesSeeder::class);
+        $this->call(AccionTemaSeeder::class);
+        $this->call(temaReunionSeeder::class);
     }
     /**
      * truncateTable
