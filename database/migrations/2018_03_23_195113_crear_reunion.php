@@ -15,14 +15,14 @@ class CrearReunion extends Migration
     {
         Schema::create('reuniones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('convocado',150);
-            $table->string('tipoReunion',150);
+            $table->string('convocado',150)->nullable();
+            $table->string('tipoReunion',150)->nullable();
             $table->date('fecha');
             $table->dateTime('hora');
             $table->string('lugar',150);
-            $table->string('organizador',150);
-            $table->string('asistentes',150);
-            $table->boolean('status');
+            $table->string('organizador',150)->nullable();
+            $table->string('asistentes',150)->nullable();;
+            $table->boolean('status')->default(true);
         });
     }
 
