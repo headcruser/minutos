@@ -1,13 +1,9 @@
 @extends('Layout')
-@section('title') Listado usuarios @endsection
+@section('title') Lista Reuniones @endsection
 
 @section('tituloSeccion')
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <small>Lista de usuarios disponibles en el sistema</small>
-@endsection
-
-@section('css')
-    @parent
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <small>Lista de Reuniones activas</small>
 @endsection
 
 @section('js')
@@ -19,7 +15,8 @@
 @endsection
 
 @section('contenido')
-    <a href="{{ route('usuarios.new') }}" class="btn btn-primary"> <i class="fa fa-plus-circle"></i> Crear usuario</a>
+
+    <a href="{{ route('reuniones.new') }}" class="btn btn-primary"> <i class="fa fa-plus-circle"></i> Nueva Reunión</a>
     <br><br>
     <div class="row">
         <div class="col-xs-12">
@@ -29,31 +26,43 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>E-mail</hd>
-                                <th>Nombre</th>
+                                <th>Tipo Reuion</hd>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Lugar</th>
+                                <th>Status</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @forelse($lista as $user)
+                        @forelse($lista as $reunion)
                         <tr>
-                            <td>{{$user->id}}   </td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->name}} </td>
+                            <td>{{$reunion->id}}   </td>
+                            <td>{{$reunion->tipoReunion}}</td>
+                            <td>{{$reunion->fecha}} </td>
+                            <td>{{$reunion->hora}} </td>
+                            <td>{{$reunion->lugar}} </td>
                             <td>
-                                <a href="{{ route('usuarios.show', $user) }}"
+                                @if ($reunion->status === 1)
+                                <p class="bg-success text-center">Activa</p>
+                                @else
+                                <p class="bg-danger text-center">Finalizada</p>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="#"
                                     class="btn btn-primary"><i class="fa fa-eye"></i> Ver Detalle</a>
                                 <form style="display:inline"
-                                    action="{{route('usuarios.delete',$user)}}"
+                                    action="#"
                                     method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger"> <i class="fa fa-trash"></i> Eliminar</button>
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
                                 </form>
                             </td>
                         </tr>
                         @empty
-                            <li> No hay usuarios Registrados</li>
+                            <li> No hay Registros</li>
                         @endforelse
                         </tbody>
                     </table>
@@ -61,4 +70,5 @@
             </div>
         </div>
     </div>
+
 @endsection
