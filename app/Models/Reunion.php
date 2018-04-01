@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tema;
 use Illuminate\Database\Eloquent\Model;
 
 class Reunion extends Model{
@@ -34,4 +35,8 @@ class Reunion extends Model{
         'asistentes',
         'status'
     ];
+
+    public function temas(){
+        return $this->belongsToMany(Tema::class,'temareunion','id','idReunion');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Reunion;
 use Illuminate\Database\Eloquent\Model;
 
 class Tema extends Model
@@ -31,4 +32,8 @@ class Tema extends Model
         'debate',
         'conclusion'
     ];
+
+    public function reuniones(){
+        return $this->belongsToMany(Reunion::class,'temareunion','id','idTema');
+    }
 }
