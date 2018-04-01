@@ -8,8 +8,6 @@
 */
 Route::get('/','WelcomeController')->name('index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // Listado Usuario
 
 Route::get('/usuarios','UserController@index')->name('usuarios.index');
@@ -30,12 +28,12 @@ Route::delete('/usuarios/{user}','UserController@delete')->name('usuarios.delete
 
 Auth::routes();  //vendor\laravel\framework\src\Illuminate\Routing\Router.php@auth
 
-// Minutas (Reuniones)
-Route::get('/minuta','MinutaController@index')->name('minuta.index');
+//(Reuniones)
+Route::get('/reuniones','MinutaController@index')->name('reuniones.index');
 
-// Route::get('/minuta/new','MinutaController@create')->name('minuta.new');
+Route::get('/reuniones/new','MinutaController@create')->name('reuniones.new');
 
-// Route::post('/minuta/new', 'MinutaController@store')->name('minuta.create');
+Route::post('/reuniones/new', 'MinutaController@store');
 
 // Route::get('/minuta/update/{minuta}','MinutaController@edit')->where ('id','[0-9]+')->name('minuta.update');
 
