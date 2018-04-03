@@ -17,18 +17,19 @@ class UserModuleTest extends TestCase
     {
         $this->get('/usuarios')
             ->assertStatus(200)
-            ->assertSee('Listar usuarios');
+            ->assertSee('Usuarios');
     }
-
-     /**
-     * Test User Case.
+    /**
+     * Create new Usaer
      *
      * @test
      */
-    function testsEditUserRoute()
+    function it_creates_a_new_user()
     {
-        $this->get('/usuarios/update/1')
-            ->assertStatus(200)
-            ->assertSee('Editar usuario');
+        $this->post('/usuarios/new',[
+            'name' => 'Fernanda',
+            'email' => 'prueba@gmail.com',
+            'password'=> '123456'
+        ])->assertSee('procesando información');
     }
 }
