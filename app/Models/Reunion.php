@@ -31,7 +31,7 @@ class Reunion extends Model{
         'fecha',
         'hora',
         'lugar',
-        'orgaizador',
+        'organizador',
         'asistentes',
         'status'
     ];

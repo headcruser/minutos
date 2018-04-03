@@ -17,7 +17,6 @@ class MinutaController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the List of all mettings.
      *
@@ -28,6 +27,36 @@ class MinutaController extends Controller
         $lista = Reunion::all();
         return view('reuniones/index',compact('lista'));
     }
+     /**
+     * Show Form edit to Reuniones
+     *
+     * @param Reunion $user
+     * @return void
+     */
+    public function edit(Reunion $reunion)
+    {
+        return view('reuniones/update',['reunion'=>$reunion]);
+    }
+    /**
+     * update
+     *
+     * @param User $user
+     * @return void
+     */
+    public function update(Reunion $reunion)
+    {
+         $data = request()->validate([
+            'fecha'     => 'required',
+            'lugar'     => 'required',
+            'convocado' =>'required',
+            'tipoReunion'=>'required',
+            'organizador'=>'required',
+            'asistentes' =>'required',
+            'status' =>'',
+        ]);
+        $reunion->update($data);
+        return redirect()->route('reuniones.index',$reunion);
+    }
     /**
      * Create new Form to create a new mettiong
      *
@@ -37,7 +66,6 @@ class MinutaController extends Controller
     {
         return view('reuniones/create');
     }
-
     /**
      * Create user in database
      *
@@ -46,22 +74,37 @@ class MinutaController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'fecha' => 'required',
-            'hora' => 'required',
-            'lugar' => 'required',
-            'tipoReunion'=>"required"
+            'fecha'     => 'required',
+            'hora'      => 'required',
+            'lugar'     => 'required',
+            'convocado' =>'required',
+            'tipoReunion'=>'required',
+            'organizador'=>'required',
+            'asistentes' =>'required',
         ]);
 
          Reunion::create([
-            'convocado' => '',
+            'convocado' => $data['convocado'],
             'tipoReunion' => $data['tipoReunion'],
             'fecha' => $data['fecha'],
             'hora' =>  new \DateTime($data['hora']),
             'lugar' => $data['lugar'],
-            'organizador' => '',
-            'asistentes' => '',
+            'organizador' => $data['organizador'],
+            'asistentes' => $data['asistentes'],
             'status' => true,
         ]);
+        return redirect()->route('reuniones.index');
+    }
+    /**
+     * delete item Reunion
+     *
+     * @param Reunion $reunion
+     * @return void
+     */
+    public function delete(Reunion $reunion) {
+        // check Validation
+        // delete items temaReunion
+        $reunion->delete();
         return redirect()->route('reuniones.index');
     }
 }

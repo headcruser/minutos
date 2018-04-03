@@ -25,7 +25,6 @@ Route::put('/usuarios/{user}','UserController@update');
 Route::delete('/usuarios/{user}','UserController@delete')->name('usuarios.delete');
 
 // Autentication Middleware
-
 Auth::routes();  //vendor\laravel\framework\src\Illuminate\Routing\Router.php@auth
 
 //(Reuniones)
@@ -35,10 +34,17 @@ Route::get('/reuniones/new','MinutaController@create')->name('reuniones.new');
 
 Route::post('/reuniones/new', 'MinutaController@store');
 
-// Route::get('/minuta/update/{minuta}','MinutaController@edit')->where ('id','[0-9]+')->name('minuta.update');
+Route::get('/reuniones/update/{reunion}','MinutaController@edit')->where ('id','[0-9]+')->name('reuniones.update');
 
-// Route::get('/minuta/{minuta}',"MinutaController@show")->where ('id','[0-9]+')->name('minuta.show');
+Route::put('/reuniones/update/{reunion}','MinutaController@update');
 
-// Route::put('/minuta/{minuta}','MinutaController@update');
+Route::get('/reuniones/{reunion}',"MinutaController@show")->where ('id','[0-9]+')->name('reunion.show');
 
-// Route::delete('/minuta/{minuta}','MinutaController@delete')->name('minuta.delete');
+Route::delete('/reuniones/{reunion}','MinutaController@delete')->name('reunion.delete');
+
+// (Temas) Asignar reunion tema
+Route::get('/temas/{reunion}', 'TemaController@all')->name('temas.all');
+
+Route::post('/temas/new', 'TemaController@store')->name('temas.new');
+
+//
