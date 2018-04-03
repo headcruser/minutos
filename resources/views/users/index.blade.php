@@ -6,6 +6,12 @@
         <small>Lista de usuarios disponibles en el sistema</small>
 @endsection
 
+@section('rutaPagina')
+    <ol class="breadcrumb">
+        <li class="active"><a href="#" ><i class="fa fa-dashboard"></i> Usuarios</a></li>
+    </ol>
+@endsection
+
 @section('css')
     @parent
 @endsection

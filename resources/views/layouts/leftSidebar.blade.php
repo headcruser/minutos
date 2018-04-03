@@ -40,24 +40,14 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="{{ route('usuarios.index') }}">
-                            <i class="fa fa-circle-o"></i> Usuarios</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i> Minutas</a>
+                           <i class="fa fa-user" aria-hidden="true"></i> Usuarios</a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="{{ route('reuniones.index') }}">
-                    <i class="fa fa-book"></i>
-                    <span>Reuniones Disponibles</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('reuniones.index') }}">
-                    <i class="fa fa-book"></i>
-                    <span>Temas</span>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span>Reuniones</span>
                 </a>
             </li>
         </ul>

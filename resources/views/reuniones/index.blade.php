@@ -6,6 +6,14 @@
         <small>Lista de Reuniones activas</small>
 @endsection
 
+@section('rutaPagina')
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Reuniones</li>
+    </ol>
+@endsection
+
+
 @section('js')
     @parent
         {{--  DATATABLES  --}}
@@ -50,10 +58,10 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="#"
+                                <a href="{{ route('reuniones.update', $reunion) }}"
                                     class="btn btn-primary"><i class="fa fa-eye"></i> Ver Detalle</a>
                                 <form style="display:inline"
-                                    action="#"
+                                    action="{{route('reunion.delete', $reunion)}}"
                                     method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}

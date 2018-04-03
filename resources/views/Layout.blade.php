@@ -35,12 +35,16 @@
                     @section('tituloSeccion')
                         Titulo Principal
                         <small>Control panel</small>
-                     @show
+                    @show
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">{{request()->path()}}</li>
-                </ol>
+
+                @section('rutaPagina')
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Pincipal {{request()->path()}}</li>
+                    </ol>
+                @show
+
             </section>
 
             <!-- Main content -->
