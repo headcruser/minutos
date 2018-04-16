@@ -48,7 +48,7 @@
                             <td>{{$reunion->id}}   </td>
                             <td>{{$reunion->tipoReunion}}</td>
                             <td>{{$reunion->fecha}} </td>
-                            <td>{{$reunion->hora}} </td>
+                            <td>{{$reunion->formatHour()->hora}} </td>
                             <td>{{$reunion->lugar}} </td>
                             <td>
                                 @if ($reunion->status === 1)

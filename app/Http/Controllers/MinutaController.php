@@ -53,7 +53,9 @@ class MinutaController extends Controller
             'organizador'=>'required',
             'asistentes' =>'required',
             'status' =>'',
+            'hora' =>'',
         ]);
+        $data['hora'] = new \DateTime($data['hora']);
         $reunion->update($data);
         return redirect()->route('reuniones.index',$reunion);
     }
