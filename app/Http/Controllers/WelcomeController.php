@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Minuta\Http\Controllers;
 
 use Illuminate\Http\Request;
 

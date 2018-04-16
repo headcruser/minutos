@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Minuta\Http\Controllers;
 
-use App\Models\Acciones;
+use Minuta\Models\Acciones;
 use Illuminate\Http\Request;
-use App\Models\Tema;
+use Minuta\Models\Tema;
 
 class AccionController extends Controller
 {

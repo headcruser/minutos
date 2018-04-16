@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Minuta\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

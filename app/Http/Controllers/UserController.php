@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Minuta\Http\Controllers;
 
-use App\User;
+use Minuta\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Minuta\Models;
 
-use App\Models\Tema;
+use Minuta\Models\Tema;
 use Illuminate\Database\Eloquent\Model;
 
 class Acciones extends Model

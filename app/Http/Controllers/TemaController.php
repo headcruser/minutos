@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Minuta\Http\Controllers;
 
-use App\Models\Tema;
-use App\Models\Reunion;
+use Minuta\Models\Tema;
+use Minuta\Models\Reunion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

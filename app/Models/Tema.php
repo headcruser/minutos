@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace Minuta\Models;
 
-use App\Models\Reunion;
-use App\Models\Acciones;
+use Minuta\Models\Reunion;
+use Minuta\Models\Acciones;
 use Illuminate\Database\Eloquent\Model;
 
 class Tema extends Model
