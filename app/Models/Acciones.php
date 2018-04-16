@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tema;
 use Illuminate\Database\Eloquent\Model;
 
 class Acciones extends Model
@@ -30,4 +31,8 @@ class Acciones extends Model
         'responsable',
         'plazo',
     ];
+
+    public function temas(){
+        return $this->belongsToMany(Tema::class,'accion_tema','idAccion','idTema');
+    }
 }

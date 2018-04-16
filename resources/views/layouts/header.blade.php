@@ -3,7 +3,7 @@
   <a href="{{ url('/reuniones') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">
-          <b>A</b>DM</span>
+           <i class="fa fa-user" aria-hidden="true"></i></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">
           <b>ADMINISTRADOR</b></span>

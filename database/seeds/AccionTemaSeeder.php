@@ -16,7 +16,7 @@ class AccionTemaSeeder extends Seeder
         $accion = Acciones::where('elementos', '=', 'Cambios Acerca de nosotros')->firstOrFail();
         $tema = Tema::where('tema', '=', 'Revision Filosofía institucional GQ Automatic')->firstOrFail();
 
-        DB::table('accionTema')->insert([
+        DB::table('accion_tema')->insert([
         'idAccion'  => $accion->id,
         'idTema'    => $tema->id
         ]);
@@ -27,7 +27,7 @@ class AccionTemaSeeder extends Seeder
         $accion2 = Acciones::where('elementos', '=', 'Reordenar la información para que aparezcan primero')
                     ->firstOrFail();
 
-        DB::table('accionTema')->insert([
+        DB::table('accion_tema')->insert([
         'idAccion'  => $accion2->id,
         'idTema'    => $tema2->id
         ]);
@@ -35,7 +35,7 @@ class AccionTemaSeeder extends Seeder
         $accion3 = Acciones::where('elementos', '=', 'Agregar Marca Manuli y descacarle porque es la principal')
                     ->firstOrFail();
 
-        DB::table('accionTema')->insert([
+        DB::table('accion_tema')->insert([
         'idAccion'  => $accion3->id,
         'idTema'    => $tema2->id
         ]);

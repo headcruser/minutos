@@ -13,12 +13,11 @@ class CreateTemaReunion extends Migration
      */
     public function up()
     {
-        Schema::create('temaReunion', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tema_reunion', function (Blueprint $table) {
             $table->integer('idReunion')->unsigned();
             $table->integer('idTema')->unsigned();
-            $table->foreign('idReunion')->references('id')->on('reuniones');
-            $table->foreign('idTema')->references('id')->on('temas');
+            $table->foreign('idReunion')->references('id')->on('reuniones')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('idTema')->references('id')->on('temas')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTemaReunion extends Migration
      */
     public function down()
     {
-        Schema::drop('temaReunion');
+        Schema::drop('tema_reunion');
     }
 }

@@ -16,7 +16,7 @@ class temaReunionSeeder extends Seeder
         $reunion = Reunion::where('tipoReunion', '=', 'Revisión Avances Página Web')->firstOrFail();
         $tema = Tema::where('tema', '=', 'Revision Filosofía institucional GQ Automatic')->firstOrFail();
 
-        DB::table('temareunion')->insert([
+        DB::table('tema_reunion')->insert([
         'idReunion'  => $reunion->id,
         'idTema'    => $tema->id
         ]);

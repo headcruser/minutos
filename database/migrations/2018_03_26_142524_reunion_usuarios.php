@@ -13,13 +13,12 @@ class ReunionUsuarios extends Migration
      */
     public function up()
     {
-        Schema::create('reunionUsuarios', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('reunion_usuarios', function (Blueprint $table) {
             $table->integer('idUsuario')->unsigned();
             $table->integer('idReunion')->unsigned();
             $table->string('rol',80);
-            $table->foreign('idUsuario')->references('id')->on('users');
-            $table->foreign('idReunion')->references('id')->on('reuniones');
+            $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('idReunion')->references('id')->on('reuniones')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
@@ -30,6 +29,6 @@ class ReunionUsuarios extends Migration
      */
     public function down()
     {
-        Schema::drop('reunionUsuarios');
+        Schema::drop('reunion_usuarios');
     }
 }

@@ -21,3 +21,4 @@ Auth::routes();
 include_once('usuarios/routes.php');
 include_once('reuniones/routes.php');
 include_once('temas/routes.php');
+include_once('acciones/routes.php');

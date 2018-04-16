@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
             'reuniones',
             'temas',
             'acciones',
-            'acciontema',
-            'temareunion'
+            'accion_tema',
+            'tema_reunion'
         ]);
 
         $this->call(UsersSeeder::class);

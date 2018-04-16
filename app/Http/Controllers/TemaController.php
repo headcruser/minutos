@@ -24,11 +24,13 @@ class TemaController extends Controller
      * @return JsonResoonse
      */
     public function all(Reunion $reunion) {
-       // $temas = Tema::all();
-        $temas = Tema::join('temareunion', 'temas.id', '=', 'temareunion.idTema')
-                    ->join('reuniones', 'reuniones.id', '=', 'temareunion.idReunion')
-                    ->select('temas.tema', 'temas.tiempo', 'temas.debate')
-                    ->get();
+
+        $temas = $reunion->temas()->get();
+
+         if(!$temas){
+            return response()->json([]);
+        }
+
         return response()->json(
             $temas->toArray()
         );
@@ -57,11 +59,9 @@ class TemaController extends Controller
         $tema->save();
 
         $reunion = $request->only('reunion');
+        $id_reunion = $reunion['reunion'];
 
-        DB::table('temareunion')->insert([
-            'idReunion'  => $reunion['reunion'],
-            'idTema'    => $tema->id
-        ]);
+        $tema->reuniones()->attach($id_reunion);
 
         return response()->json(['success'=>'El tema se añadio correctamente.']);
        }

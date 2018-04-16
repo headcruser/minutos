@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Acciones;
 use Illuminate\Http\Request;
+use App\Models\Tema;
 
 class AccionController extends Controller
 {
@@ -12,7 +13,20 @@ class AccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function all(Tema $tema)
+    {
+        $acciones = $tema->acciones;
+
+        if(!$acciones){
+            return response()->json([]);
+        }
+
+        return response()->json(
+            $acciones->toArray()
+        );
+    }
+
+    public function show()
     {
         $acciones = Acciones::join('acciontema', 'acciones.id', '=', 'acciontema.idAccion')
                     ->join('temas', 'temas.id', '=', 'acciontema.idTema')

@@ -13,12 +13,11 @@ class CreateAccionTema extends Migration
      */
     public function up()
     {
-         Schema::create('accionTema', function (Blueprint $table) {
-            $table->increments('id');
+         Schema::create('accion_tema', function (Blueprint $table) {
             $table->integer('idAccion')->unsigned();
             $table->integer('idTema')->unsigned();
-            $table->foreign('idAccion')->references('id')->on('acciones');
-            $table->foreign('idTema')->references('id')->on('temas');
+            $table->foreign('idAccion')->references('id')->on('acciones')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idTema')->references('id')->on('temas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateAccionTema extends Migration
      */
     public function down()
     {
-        Schema::drop('accionTema');
+        Schema::drop('accion_tema');
     }
 }

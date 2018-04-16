@@ -37,6 +37,6 @@ class Reunion extends Model{
     ];
 
     public function temas(){
-        return $this->belongsToMany(Tema::class,'temareunion','id','idReunion');
+        return $this->belongsToMany(Tema::class,'tema_reunion','idReunion','idTema');
     }
 }

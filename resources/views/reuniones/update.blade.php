@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    <div class="col-md-12">
+    <div class="col-md-12 col-lg-12 col-xs-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"> <a href="#reuniones" data-toggle="tab">Editar Reunion</a></li>
@@ -200,7 +200,7 @@
                             <a href="{{ route('reuniones.index') }}" class="btn btn-default">
                                  <i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar
                             </a>
-                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#listarAcciones" id="btn-listar-acciones">
                             Ver Listado de acciones</button>
                         </form>
                     </div>
@@ -214,52 +214,60 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Default Modal</h4>
-            </div>
-            <div class="modal-body">
-            <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+
     {{-- Modal Lista Temaas --}}
     <div class="modal fade" id="listarTemas">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Listar Temas Disponibles</h4>
-            </div>
-            <div class="modal-body">
-                <table class="table table-bordered table-striped" id="tbl_temas">
-                    <thead>
-                        <th>Tema</th>
-                        <th>Tiempo</th>
-                        <th>Debate</th>
-                    </thead>
-                    <tbody id="datosTemas"></tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Listar Temas Disponibles</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped" id="tbl_temas">
+                        <thead>
+                            <th>Tema</th>
+                            <th>Tiempo</th>
+                            <th>Debate</th>
+                        </thead>
+                        <tbody id="datosTemas"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
-        <!-- /.modal-content -->
+    </div>
+    {{-- Listar acciones --}}
+    <div class="modal fade" id="listarAcciones">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Listar accciones</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered" id="tbl_acciones">
+                                <thead>
+                                    <th>Elementos</th>
+                                    <th>Responsable</th>
+                                    <th>Plazo</th>
+                                </thead>
+                                <tbody id="datosAcciones"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
-        <!-- /.modal-dialog -->
     </div>
 
     <script>
@@ -268,7 +276,7 @@
             loadComboTheme()
 
             // Insert data Ajax
-                $("#btn_tema").click((event) => {
+            $("#btn_tema").click((event) => {
                 event.preventDefault()
 
                 var route = "{{ route('temas.new') }}"
@@ -282,6 +290,7 @@
                     success:(data)=>{
                         $("#__formTema")[0].reset();
                         loadTableThemes()
+                        loadComboTheme()
                         alert(data.success)
                     },
                     error:(data)=>{
@@ -293,8 +302,23 @@
                 })
             })
 
+            btnListarAccionesDisabled(true);
+
+            $("#temaSelect").change(()=>{
+                loadTableActions()
+                btnListarAccionesDisabled(false);
+	        });
 
         })
+
+        function btnListarAccionesDisabled(status){
+            $('#btn-listar-acciones').attr("disabled", status);
+            if(status) {
+                $('#btn-listar-acciones').hide()
+            }else{
+                $('#btn-listar-acciones').show('slow')
+            }
+        }
 
         /**
         * load Items for table themes
@@ -319,12 +343,37 @@
             })
         }
 
+        /**
+        * load Items for table themes
+        *
+        * @return void
+        */
+        function loadTableActions()
+        {
+            var tablaTemas = $("#datosAcciones");
+            var opcion_seleccionada = $("#temaSelect option:selected")
+            var route = window.location.origin+'/acciones/'+opcion_seleccionada.val()
+
+            tablaTemas.empty()
+            $.get(route ,(response) => {
+
+                $(response).each((key, value) => {
+                    tablaTemas.append("<tr>")
+                    tablaTemas.append("<td>"+value.elementos+"</td>")
+                    tablaTemas.append("<td>"+value.responsable+"</td>")
+                    tablaTemas.append("<td>"+value.plazo+"</td>")
+                    tablaTemas.append("</tr>")
+                })
+            })
+        }
+
         function loadComboTheme()
         {
             var select = $("#temaSelect");
             var route = "{{ url('/temas/'.$reunion->id) }}"
 
             select.empty()
+            select.append('<option value='+0+'>'+'Selecciona un tema'+'</option>')
 
             $.get(route ,(response) => {
                 $(response).each((key, value) => {
