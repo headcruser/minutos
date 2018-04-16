@@ -270,6 +270,24 @@
         </div>
     </div>
 
+    <div class="modal modal-success fade" id="success" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Exito</h4>
+                </div>
+                <div class="modal-body">
+                    <p>El elemento fue creado exitosamente</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready( () => {
             loadTableThemes()
@@ -291,7 +309,8 @@
                         $("#__formTema")[0].reset();
                         loadTableThemes()
                         loadComboTheme()
-                        alert(data.success)
+                        $('#success').modal('show')
+                        //alert(data.success)
                     },
                     error:(data)=>{
                         $.each(data.responseJSON.errors, function(i, item) {
