@@ -60,7 +60,7 @@
                                      <div class="form-group">
                                         <label for="inputHora">Hora</label>
                                         <input type="time" class="form-control" id="inputHora" name="hora"
-                                        value="{{old('hora',$reunion->hora)}}">
+                                        value="{{old('hora',$reunion->formatHour()->hora)}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
