@@ -160,6 +160,8 @@ return [
         Minuta\Providers\EventServiceProvider::class,
         Minuta\Providers\RouteServiceProvider::class,
 
+        /* Laravel Collective*/
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -208,6 +210,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /**Alias Form Laravel Collective */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
