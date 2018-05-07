@@ -1,8 +1,14 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "Proyecto Minuta",
+    "description": "Aplicación para el registro de reuniones",
+    "keywords": ["Minuta", "laravel"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Martinez Sierra",
+            "email": "headcruser@gmail.com"
+        }
+    ],
     "type": "project",
     "require": {
         "php": "^7.1.3",
