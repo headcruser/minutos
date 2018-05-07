@@ -3,8 +3,11 @@
 namespace Minuta\Http\Controllers;
 
 use Minuta\Models\Tema;
+
 use Minuta\Models\Reunion;
 use Illuminate\Http\Request;
+use Minuta\Http\Requests\Minuta\{CreateMinuta,UpdateMinuta};
+
 
 class MinutaController extends Controller
 {
@@ -43,20 +46,9 @@ class MinutaController extends Controller
      * @param User $user
      * @return void
      */
-    public function update(Reunion $reunion)
+    public function update(UpdateMinuta $request ,Reunion $reunion)
     {
-         $data = request()->validate([
-            'fecha'     => 'required',
-            'lugar'     => 'required',
-            'convocado' =>'required',
-            'tipoReunion'=>'required',
-            'organizador'=>'required',
-            'asistentes' =>'required',
-            'status' =>'',
-            'hora' =>'',
-        ]);
-        $data['hora'] = new \DateTime($data['hora']);
-        $reunion->update($data);
+        $request->update($reunion);
         return redirect()->route('reuniones.index',$reunion);
     }
     /**
@@ -73,28 +65,9 @@ class MinutaController extends Controller
      *
      * @return void
      */
-    public function store()
+    public function store(CreateMinuta $request)
     {
-        $data = request()->validate([
-            'fecha'     => 'required',
-            'hora'      => 'required',
-            'lugar'     => 'required',
-            'convocado' =>'required',
-            'tipoReunion'=>'required',
-            'organizador'=>'required',
-            'asistentes' =>'required',
-        ]);
-
-         Reunion::create([
-            'convocado' => $data['convocado'],
-            'tipoReunion' => $data['tipoReunion'],
-            'fecha' => $data['fecha'],
-            'hora' =>  new \DateTime($data['hora']),
-            'lugar' => $data['lugar'],
-            'organizador' => $data['organizador'],
-            'asistentes' => $data['asistentes'],
-            'status' => true,
-        ]);
+        $request->save();
         return redirect()->route('reuniones.index');
     }
     /**

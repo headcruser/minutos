@@ -2,9 +2,10 @@
 
 namespace Minuta\Http\Controllers;
 
+use Minuta\Models\Tema;
 use Minuta\Models\Acciones;
 use Illuminate\Http\Request;
-use Minuta\Models\Tema;
+use Minuta\Http\Requests\Action\CreateAction;
 
 class AccionController extends Controller
 {
@@ -21,9 +22,7 @@ class AccionController extends Controller
             return response()->json([]);
         }
 
-        return response()->json(
-            $acciones->toArray()
-        );
+        return response()->json($acciones->toArray());
     }
 
     public function show()
@@ -32,38 +31,13 @@ class AccionController extends Controller
                     ->join('temas', 'temas.id', '=', 'acciontema.idTema')
                     ->select('acciones.elementos', 'acciones.responsable', 'acciones.plazo')
                     ->get();
-        return response()->json(
-        $acciones->toArray()
-        );
+
+        return response()->json($acciones->toArray());
     }
 
-     public function store(Request $request)
+    public function store(CreateAction $request)
     {
-       if($request->ajax()){
-            $data = request()->validate([
-            'elementos'       => 'required',
-            'responsable'     => 'required',
-            'plazo'           => 'required',
-        ],[
-            'elementos.required'   => 'El Campo elementos es obligatorio',
-            'responsable.required' => 'El Campo responsable es obligatorio',
-            'plazo.required'       => 'El Campo plazo es obligatorio',
-        ]);
-
-        $acciones = new Acciones();
-        $acciones->elementos         = $data['elementos'];
-        $acciones->responsable       = $data['responsable'];
-        $acciones->plazo             = $data['plazo'];
-        $acciones->save();
-
-        $tema = $request->only('tema');
-
-        DB::table('acciontema')->insert([
-            'idAccion'  => $acciones->id,
-            'idTema'    => $tema['tema']
-        ]);
-
+        $request->save();
         return response()->json(['success'=>'La acción añadio correctamente.']);
-       }
     }
 }

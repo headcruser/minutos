@@ -6,6 +6,7 @@ use Minuta\Models\Tema;
 use Minuta\Models\Reunion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Minuta\Http\Requests\Tema\CreateTheme;
 
 class TemaController extends Controller
 {
@@ -21,7 +22,7 @@ class TemaController extends Controller
     /**
      * Display a list of the themes
      *
-     * @return JsonResoonse
+     * @return JsonResponse
      */
     public function all(Reunion $reunion) {
 
@@ -31,40 +32,13 @@ class TemaController extends Controller
             return response()->json([]);
         }
 
-        return response()->json(
-            $temas->toArray()
-        );
+        return response()->json($temas->toArray());
     }
 
-    public function store(Request $request)
+    public function store(CreateTheme $request)
     {
-       if($request->ajax()){
-            $data = request()->validate([
-            'tema'       => 'required',
-            'tiempo'     => 'required',
-            'debate'     => 'required',
-            'conclusion' => 'required'
-        ],[
-            'tema.required'         => 'El Campo Tema es obligatorio',
-            'tiempo.required'       => 'El Campo tiempo es obligatorio',
-            'debate.required'       => 'El Campo debate es obligatorio',
-            'conclusion.required'   => 'El campo conclusion es obligatorio'
-        ]);
-
-        $tema = new Tema();
-        $tema->tema         = $data['tema'];
-        $tema->tiempo       = $data['tiempo'];
-        $tema->debate       = $data['debate'];
-        $tema->conclusion   = $data['conclusion'];
-        $tema->save();
-
-        $reunion = $request->only('reunion');
-        $id_reunion = $reunion['reunion'];
-
-        $tema->reuniones()->attach($id_reunion);
-
+        $request->save();
         return response()->json(['success'=>'El tema se añadio correctamente.']);
-       }
     }
 
     public function update(User $user)
