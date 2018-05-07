@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Tema;
-use App\Models\Reunion;
+use Minuta\Models\Tema;
+use Minuta\Models\Reunion;
 use Illuminate\Database\Seeder;
 
 class temaReunionSeeder extends Seeder

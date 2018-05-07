@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Reunion;
+use Minuta\Models\Reunion;
 use Illuminate\Database\Seeder;
 
 class ReunionesSeeder extends Seeder

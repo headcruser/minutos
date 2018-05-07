@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Tema;
+use Minuta\Models\Tema;
 use Illuminate\Database\Seeder;
 
 class TemasSeeder extends Seeder

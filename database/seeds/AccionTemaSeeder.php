@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Tema;
-use App\Models\Acciones;
+use Minuta\Models\Tema;
+use Minuta\Models\Acciones;
 use Illuminate\Database\Seeder;
 
 class AccionTemaSeeder extends Seeder

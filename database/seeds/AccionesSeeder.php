@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Acciones;
+use Minuta\Models\Acciones;
 use Illuminate\Database\Seeder;
 
 class AccionesSeeder extends Seeder

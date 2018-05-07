@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use Minuta\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
