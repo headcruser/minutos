@@ -1,4 +1,4 @@
-@extends('Layout')
+@extends('layouts.layout')
 @section('title','Crear nueva Reunion')
 @section('tituloSeccion')
         <i class="fa fa-users" aria-hidden="true"></i>

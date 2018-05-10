@@ -12,20 +12,20 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
     @section('css')
-       @include('layouts.css')
+       @include('layouts.partials.css')
     @show
 
      @section('js')
-        @include('layouts.js')
+        @include('layouts.partials.js')
      @show
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
-        @include('layouts.header')
+        @include('layouts.partials.header')
 
-        @include('layouts.leftSidebar')
+        @include('layouts.partials.leftSidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -57,10 +57,10 @@
         </div>
 
         {{-- Footer --}}
-         @include('layouts.footer')
+         @include('layouts.partials.footer')
 
          {{-- Control Sidebar --}}
-         @include('layouts.controlSidebar')
+         @include('layouts.partials.controlSidebar')
     </div>
     <!-- ./wrapper -->
 </body>

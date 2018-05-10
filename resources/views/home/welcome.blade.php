@@ -1,4 +1,4 @@
-@extends('Layout')
+@extends('layouts.layout')
 @section('title') Sistema Reuniones @endsection
 
 @section('tituloSeccion')

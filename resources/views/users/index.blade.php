@@ -1,4 +1,4 @@
-@extends('Layout')
+@extends('layouts.layout')
 @section('title') Listado usuarios @endsection
 
 @section('tituloSeccion')

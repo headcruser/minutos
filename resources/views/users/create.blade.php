@@ -1,4 +1,4 @@
-@extends('Layout')
+@extends('layouts.layout')
 @section('title','Crear Usuario')
 @section('tituloSeccion')
         <i class="fa fa-user" ></i> Usuario
