@@ -147,13 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
-
-        /*
-         * Application Service Providers...
-         */
+        /*Application Service Providers...*/
         Minuta\Providers\AppServiceProvider::class,
         Minuta\Providers\AuthServiceProvider::class,
         // Minuta\Providers\BroadcastServiceProvider::class,
@@ -162,6 +156,9 @@ return [
 
         /* Laravel Collective*/
         Collective\Html\HtmlServiceProvider::class,
+
+        //Entrust
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -215,6 +212,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 
+        // Alias Entrust
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

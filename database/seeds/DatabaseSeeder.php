@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
             'temas',
             'acciones',
             'accion_tema',
-            'tema_reunion'
+            'tema_reunion',
+            'roles',
+            'permissions'
         ]);
 
         $this->call(UsersSeeder::class);
@@ -26,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AccionesSeeder::class);
         $this->call(AccionTemaSeeder::class);
         $this->call(temaReunionSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
     }
     /**
      * truncateTable
