@@ -121,7 +121,7 @@
               <div class="tab-pane" id="temas">
                 <div class="box box-default">
                     <div class="box-body">
-                        <form id="__formTema">
+                        <form id="__formTema" action="{{ route('temas.new') }}">
                             <legend class="box-title">Asignar Tema</legend>
                             <input type="hidden" name="_token" value="{{csrf_token()}}" id="tokenTema">
                             <div class="form-group">
@@ -173,7 +173,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label>Selecciona un tema</label>
-                                <select class="form-group" name="tema" id="temaSelect"></select>
+                                <select class="form-control" name="tema" id="temaSelect"></select>
                             </div>
 
                             <div class="form-group">
@@ -252,6 +252,8 @@
                 <div class="modal-body">
                     <div class="box">
                         <div class="box-body">
+                        <input type="hidden" id="url_table_themes"
+                                value="{{ url('/temas/'.$reunion->id) }}">
                             <table class="table table-bordered" id="tbl_acciones">
                                 <thead>
                                     <th>Elementos</th>
@@ -288,120 +290,6 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready( () => {
-            loadTableThemes()
-            loadComboTheme()
-
-            // Insert data Ajax
-            $("#btn_tema").click((event) => {
-                event.preventDefault()
-
-                var route = "{{ route('temas.new') }}"
-                var formulario = $("#__formTema").serialize()
-
-                $.ajax({
-                    url: route,
-                    type: 'POST',
-                    data: formulario,
-                    dataType:'json',
-                    success:(data)=>{
-                        $("#__formTema")[0].reset();
-                        loadTableThemes()
-                        loadComboTheme()
-                        $('#success').modal('show')
-                        //alert(data.success)
-                    },
-                    error:(data)=>{
-                        $.each(data.responseJSON.errors, function(i, item) {
-                                console.log(item)
-                        })
-                        console.log(data)
-                    }
-                })
-            })
-
-            btnListarAccionesDisabled(true);
-
-            $("#temaSelect").change(()=>{
-                loadTableActions()
-                btnListarAccionesDisabled(false);
-	        });
-
-        })
-
-        function btnListarAccionesDisabled(status){
-            $('#btn-listar-acciones').attr("disabled", status);
-            if(status) {
-                $('#btn-listar-acciones').hide()
-            }else{
-                $('#btn-listar-acciones').show('slow')
-            }
-        }
-
-        /**
-        * load Items for table themes
-        *
-        * @return void
-        */
-        function loadTableThemes()
-        {
-            var tablaTemas = $("#datosTemas");
-            var route = "{{ url('/temas/'.$reunion->id) }}"
-
-            tablaTemas.empty()
-
-            $.get(route ,(response) => {
-                $(response).each((key, value) => {
-                    tablaTemas.append("<tr>")
-                    tablaTemas.append("<td>"+value.tema+"</td>")
-                    tablaTemas.append("<td>"+value.tiempo+"</td>")
-                    tablaTemas.append("<td>"+value.debate+"</td>")
-                    tablaTemas.append("</tr>")
-                })
-            })
-        }
-
-        /**
-        * load Items for table themes
-        *
-        * @return void
-        */
-        function loadTableActions()
-        {
-            var tablaTemas = $("#datosAcciones");
-            var opcion_seleccionada = $("#temaSelect option:selected")
-            var route = window.location.origin+'/acciones/'+opcion_seleccionada.val()
-
-            tablaTemas.empty()
-            $.get(route ,(response) => {
-
-                $(response).each((key, value) => {
-                    tablaTemas.append("<tr>")
-                    tablaTemas.append("<td>"+value.elementos+"</td>")
-                    tablaTemas.append("<td>"+value.responsable+"</td>")
-                    tablaTemas.append("<td>"+value.plazo+"</td>")
-                    tablaTemas.append("</tr>")
-                })
-            })
-        }
-
-        function loadComboTheme()
-        {
-            var select = $("#temaSelect");
-            var route = "{{ url('/temas/'.$reunion->id) }}"
-
-            select.empty()
-            select.append('<option value='+0+'>'+'Selecciona un tema'+'</option>')
-
-            $.get(route ,(response) => {
-                $(response).each((key, value) => {
-                        select.append('<option value='+value.id+'>'+value.tema+'</option>');
-                })
-            })
-        }
-
-
-
+    <script src="{{ asset('js/reuniones.js') }}">
     </script>
 @endsection
