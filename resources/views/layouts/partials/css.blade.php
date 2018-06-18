@@ -1,5 +1,5 @@
  {{-- Admin LTE css --}}
-<link rel="stylesheet" href="{{ asset('css/adminLTE.css') }}">
+<link rel="stylesheet" href="{{ asset('css/vendor/adminLTE.css') }}">
 
 {{--  Base router  --}}
 <base href="{{url('/')}}">

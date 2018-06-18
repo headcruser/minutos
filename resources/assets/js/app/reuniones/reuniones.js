@@ -1,4 +1,16 @@
- $(document).ready( () => {
+/**
+ * ============================================================================
+ * @fileoverview Se encarga de manejar todas las operaciones para las reuniones
+ *
+ * @version       1.0
+ *
+ * @author        Daniel Martinez Sierra <headcruser@gmail.com>
+ * @copyright     Aranza y Cervantes
+ * ============================================================================
+ */
+
+
+$(document).ready( () => {
   form_theme()
   loadThemes()
   btnListarAccionesDisabled(true)

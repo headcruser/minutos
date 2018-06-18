@@ -44,3 +44,20 @@ Antes de comenzar a trabajar con laravel, hay que ejecutar el siguiente comando 
 ```
 php artisan key:generate
 ```
+
+## Laravel mix
+Laravel Mix proporciona una API para compilar archivos comunes de css y javascript. Se utiliza web pack para empaquetar los módulos de css y js del proyecto.
+
+Para ejecutar web pack, se utilizan el siguiente comando:
+```
+//Ejecutar todas las tareas de compilacion...
+npm run dev
+
+// Obtener todos los archivos en su version minificada.
+npm run production
+
+//Compilar los nuevos cambios
+npm run watch
+```
+
+

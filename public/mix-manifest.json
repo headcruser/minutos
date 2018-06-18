@@ -1,4 +1,8 @@
 {
-    "/js/adminLTE.js": "/js/adminLTE.js",
-    "/css/adminLTE.css": "/css/adminLTE.css"
+    "/js/reuniones/reuniones.js": "/js/reuniones/reuniones.js",
+    "/js/reuniones/listarReuniones.js": "/js/reuniones/listarReuniones.js",
+    "/js/app.js": "/js/app.js",
+    "/js/vendor/adminLTE.js": "/js/vendor/adminLTE.js",
+    "/css/vendor/adminLTE.css": "/css/vendor/adminLTE.css",
+    "/css/app.css": "/css/app.css"
 }

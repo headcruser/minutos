@@ -17,9 +17,9 @@
 @section('js')
     @parent
         {{--  DATATABLES  --}}
-        <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset('js/dataTables.bootstrap.min.js')}}"></script>
-        <script src="{{ asset('js/tables/customDataTable.js') }}"></script>
+        <script src="{{ asset('js/vendor/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('js/vendor/dataTables.bootstrap.min.js')}}"></script>
+        <script src="{{ asset('js/reuniones/listarReuniones.js') }}"></script>
 @endsection
 
 @section('contenido')
@@ -30,7 +30,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
-                    <table id="tbl_data" class="table table-bordered table-striped">
+                    <table id="tb_reuniones" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>

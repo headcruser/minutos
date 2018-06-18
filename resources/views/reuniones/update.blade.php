@@ -290,6 +290,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/reuniones.js') }}">
+    <script src="{{ asset('js/reuniones/reuniones.js') }}">
     </script>
 @endsection
