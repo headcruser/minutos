@@ -57,14 +57,15 @@ class CreateTheme extends FormRequest
         DB::transaction(function () {
             $data = $this->validated();
 
-             if($this->ajax()){
+             if($this->ajax())
+             {
+                $tema = Tema::create([
+                    'tema'      =>$data['tema'],
+                    'tiempo'    =>$data['tiempo'],
+                    'debate'    =>$data['debate'],
+                    'conclusion'=> $data['conclusion']
+                ]);
 
-                $tema = new Tema();
-                $tema->tema         = $data['tema'];
-                $tema->tiempo       = $data['tiempo'];
-                $tema->debate       = $data['debate'];
-                $tema->conclusion   = $data['conclusion'];
-                $tema->save();
 
                 $reunion = $this->only('reunion');
                 $id_reunion = $reunion['reunion'];

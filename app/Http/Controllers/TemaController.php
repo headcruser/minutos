@@ -12,8 +12,6 @@ class TemaController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -22,7 +20,7 @@ class TemaController extends Controller
     /**
      * Display a list of the themes
      *
-     * @return JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function all(Reunion $reunion) {
 
@@ -35,17 +33,35 @@ class TemaController extends Controller
         return response()->json($temas->toArray());
     }
 
+    /**
+     * store
+     *
+     * @param CreateTheme $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(CreateTheme $request)
     {
         $request->save();
         return response()->json(['success'=>'El tema se añadio correctamente.']);
     }
 
+    /**
+     * update
+     *
+     * @param User $user
+     * @return \Illuminate\Http\Response
+     */
     public function update(User $user)
     {
       return 'update';
     }
 
+    /**
+     * delete
+     *
+     * @param User $user
+     * @return \Illuminate\Http\Response
+     */
     public function delete(User $user)
     {
        return 'delete';

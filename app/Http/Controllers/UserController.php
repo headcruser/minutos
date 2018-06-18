@@ -5,6 +5,8 @@ namespace Minuta\Http\Controllers;
 use Minuta\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Minuta\Http\Requests\Usuario\CreateUserRequest;
+use Minuta\Http\Requests\Usuario\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -20,23 +22,28 @@ class UserController extends Controller
     /**
      * Show List user
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $lista = User::all();
-         return view('users/index',compact('lista'));
+        return view('users/index',compact('lista'));
     }
 
+    /**
+     * show
+     *
+     * @param User $user
+     * @return \Illuminate\Http\Response
+     */
     public function show( User $user) {
-        $user = User::findOrFail($user->id);
         return view('users/show',compact('user'));
     }
 
     /**
      * Display form to create user
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -45,31 +52,18 @@ class UserController extends Controller
     /**
      * Create user in database
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(CreateUserRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required'
-        ],[
-            'name.required' => 'El Campo nombre es obligatorio',
-            'email.required' => 'El Campo email es obligatorio',
-            'password.required' => 'El Campo password es obligatorio'
-        ]);
-        User::create([
-            'name'      => $data['name'],
-            'email'     => $data['email'],
-            'password'  => bcrypt($data['password'])
-        ]);
+        $request->crear();
         return redirect()->route('usuarios.index');
     }
     /**
      * Show Form edit to Users
      *
      * @param User $user Edit to user
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
@@ -79,28 +73,24 @@ class UserController extends Controller
      * update
      *
      * @param User $user
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function update(User $user)
+    public function update(User $user, UpdateUserRequest $request)
     {
-        $data = request()->validate([
-            'name'      =>'required',
-            'email'     =>'required|email',
-            'password'  =>''
-        ]);
+        $request->update($user);
 
-        $data['password'] = bcrypt($data['password']);
-        $user->update($data);
         return redirect()->route('usuarios.show',$user);
     }
     /**
      * delete a user in Database
      *
      * @param User $user Delete user
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function delete(User $user){
+    public function delete(User $user)
+    {
         $user->delete();
+
         return redirect()->route('usuarios.index');
     }
 }

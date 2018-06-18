@@ -25,16 +25,13 @@ class AccionController extends Controller
         return response()->json($acciones->toArray());
     }
 
-    public function show()
-    {
-        $acciones = Acciones::join('acciontema', 'acciones.id', '=', 'acciontema.idAccion')
-                    ->join('temas', 'temas.id', '=', 'acciontema.idTema')
-                    ->select('acciones.elementos', 'acciones.responsable', 'acciones.plazo')
-                    ->get();
-
-        return response()->json($acciones->toArray());
-    }
-
+    /**
+     * store
+     * Almacena una accion en la base de datos
+     *
+     * @param CreateAction $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(CreateAction $request)
     {
         $request->save();

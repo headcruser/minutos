@@ -34,7 +34,7 @@ class MinutaController extends Controller
      * Show Form edit to Reuniones
      *
      * @param Reunion $user
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function edit(Reunion $reunion)
     {
@@ -44,7 +44,7 @@ class MinutaController extends Controller
      * update
      *
      * @param User $user
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateMinuta $request ,Reunion $reunion)
     {
@@ -63,7 +63,7 @@ class MinutaController extends Controller
     /**
      * Create user in database
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function store(CreateMinuta $request)
     {
@@ -74,7 +74,7 @@ class MinutaController extends Controller
      * delete item Reunion
      *
      * @param Reunion $reunion
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function delete(Reunion $reunion) {
         // check Validation
