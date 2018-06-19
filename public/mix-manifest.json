@@ -1,4 +1,5 @@
 {
+    "/js/usuarios/listarUsuarios.js": "/js/usuarios/listarUsuarios.js",
     "/js/reuniones/reuniones.js": "/js/reuniones/reuniones.js",
     "/js/reuniones/listarReuniones.js": "/js/reuniones/listarReuniones.js",
     "/js/app.js": "/js/app.js",

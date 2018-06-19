@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * @fileoverview Carga las reuniones disponibles del sistema.
+ * @fileoverview Carga el datatables para listar los usuarios.
  *
  * @version       1.0
  *
@@ -9,22 +9,20 @@
  * ============================================================================
  */
 
-$(document).ready( () =>
-{
-  cargarReuniones();
+$(document).ready(() => {
+  cargarUsuarios();
 });
 
 
 /**
  * Carga una lista de elementos en el databables.
  *
- * @function cargarReuniones
+ * @function cargarUsuarios
  * @return {null}
  */
-function cargarReuniones()
-{
+function cargarUsuarios() {
 
-  let table = $('#tb_reuniones').DataTable({
+  let table = $('#tb_usuarios').DataTable({
     "language": {
       lengthMenu: "Mostrar _MENU_ registros por página",
       zeroRecords: "No se encontraron resultados en su busqueda",

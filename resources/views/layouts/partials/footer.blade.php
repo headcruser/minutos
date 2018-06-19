@@ -1,7 +1,21 @@
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Minuta Versión</b> 2.4.0
+{{--SECCION FOOTER--}}
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="float-left">
+            <ul>
+                <li>
+                    <a href="#">
+                  Sistema de Minutas
+                </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright float-right">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script>, Minuta <i class="material-icons">favorite</i> by
+            <a href="https://aranzaycervantes.com" target="_blank">AranzaYCervantes</a>
+        </div>
     </div>
-    <strong>Copyright &copy; 2018</strong>
 </footer>

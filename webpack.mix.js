@@ -11,39 +11,19 @@ let mix = require('laravel-mix');
  |
  */
 mix.scripts([
-  'resources/assets/js/vendor/jquery.min.js',
-  'resources/assets/js/vendor/jquery-ui.min.js',
-  'resources/assets/js/vendor/bootstrap.min.js',
-  'resources/assets/js/vendor/raphael.min.js',
-  'resources/assets/js/vendor/morris.min.js',
-  'resources/assets/js/vendor/jquery.sparkline.min.js',
-  'resources/assets/js/vendor/jquery-jvectormap-1.2.2.min.js',
-  'resources/assets/js/vendor/jquery-jvectormap-world-mill-en',
-  'resources/assets/js/vendor/jquery.knob.min.js',
-  'resources/assets/js/vendor/moment.min.js',
-  'resources/assets/js/vendor/daterangepicker.js',
-  'resources/assets/js/vendor/bootstrap-datepicker.min.js',
-  'resources/assets/js/vendor/bootstrap3-wysihtml5.all.min.js',
-  'resources/assets/js/vendor/jquery.slimscroll.min.js',
-  'resources/assets/js/vendor/fastclick.js',
-  'resources/assets/js/vendor/adminlte.min.js',
-  'resources/assets/js/vendor/dashboard.js',
-  'resources/assets/js/vendor/demo.js',
-
+  'node_modules/material-dashboard/assets/js/core/jquery.min.js',
+  'node_modules/material-dashboard/assets/js/core/popper.min.js',
+  'node_modules/material-dashboard/assets/js/core/bootstrap-material-design.min.js',
+  'node_modules/material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js',
+  'node_modules/material-dashboard/assets/js/plugins/chartist.min.js',
+  'node_modules/material-dashboard/assets/js/material-dashboard.min.js',
+  'node_modules/datatables.net/js/jquery.dataTables.js',
 ],'public/js/vendor/adminLTE.js');
 
 // ESTILOS CSS
 mix.styles([
-  'resources/assets/css/vendor/bootstrap.min.css',
-  'resources/assets/css/vendor/font-awesome.min.css',
-  'resources/assets/css/vendor/ionicons.min.css',
-  'resources/assets/css/vendor/dataTables.bootstrap.min.css',
-  'resources/assets/css/vendor/AdminLTE.min.css',
-  'resources/assets/css/vendor/_all-skins.min.css',
-  'resources/assets/css/vendor/morris.css',
-  'resources/assets/css/vendor/jquery-jvectormap.css',
-  'resources/assets/css/vendor/daterangepicker.css',
-  'resources/assets/css/vendor/bootstrap3-wysihtml5.min.css',
+ 'node_modules/material-dashboard/assets/css/material-dashboard.min.css',
+ 'node_modules/material-dashboard/assets/css/demo/demo.css',
 ], 'public/css/vendor/adminLTE.css');
 
 
@@ -65,15 +45,11 @@ mix.js([
   'resources/assets/js/app/reuniones/listarReuniones.js'
 ], 'public/js/reuniones/listarReuniones.js');
 
+mix.js([
+  'resources/assets/js/app/usuarios/listarUsuarios.js'
+], 'public/js/usuarios/listarUsuarios.js');
+
+
 
 //IMAGENES Y FUENTES
-mix.copyDirectory('resources/assets/img', 'public/img');
-mix.copyDirectory('resources/assets/fonts', 'public/css/fonts');
-
-
-// DATATABLES
-// mix.copy('resources/assets/js/vendor/dataTables.bootstrap.min.js',
-//         'public/js/vendor/dataTables.bootstrap.min.js');
-
-// mix.copy('resources/assets/js/vendor/jquery.dataTables.min.js',
-//   'public/js/vendor/jquery.dataTables.min.js');
+mix.copyDirectory('node_modules/material-dashboard/assets/img', 'public/img');

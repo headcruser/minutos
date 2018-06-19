@@ -159,6 +159,9 @@ return [
 
         //Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+
+        //DATATABLES
+         Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -214,6 +217,9 @@ return [
 
         // Alias Entrust
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+
+        //ALIAS DATATABLES
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
