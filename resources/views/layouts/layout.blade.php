@@ -3,15 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title')Admin AdminLTE 2 | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    {{--  Meta Description  --}}
-     <meta name="description" content="Aplicacion de minuta para reuniones.">
-    {{--  Favicon  --}}
+    <meta name="description" content="Aplicacion de minuta para reuniones.">
+
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
-    <!--     Fonts and icons     -->
+    <title>@yield('title')Admin AdminLTE 2 | Dashboard</title>
+
+   {{-- FUENTES E ICONOS --}}
     <link rel="stylesheet"
     type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
@@ -43,19 +42,19 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item {{request()->is('/')?'active':''}}">
             <a class="nav-link" href="{{url('/')}}">
               <i class="material-icons">dashboard</i>
               <p>INICIO</p>
             </a>
           </li>
-           <li class="nav-item ">
+           <li class="nav-item {{request()->is('reuniones')?'active':''}}">
             <a class="nav-link" href="{{route('reuniones.index')}}">
               <i class="material-icons">person</i>
               <p>REUNIONES</p>
             </a>
           </li>
-           <li class="nav-item ">
+           <li class="nav-item {{request()->is('usuarios')?'active':''}}">
             <a class="nav-link" href="{{route('usuarios.index')}}">
               <i class="material-icons">content_paste</i>
               <p>USUARIOS</p>
