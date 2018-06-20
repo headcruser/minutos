@@ -8,7 +8,7 @@
     <div class="card-body">
       <h4 class="card-title">Bienvenido al sistema de minutas</h4>
       <p class="card-text">Puede revisar sus reuniones en la seccion de reuniones.</p>
-      <a href="#" class="btn btn-primary">Revisar reuniones</a>
+      <a href="{{route('reuniones.index')}}" class="btn btn-primary">Revisar reuniones</a>
     </div>
   </div>
 @endsection
